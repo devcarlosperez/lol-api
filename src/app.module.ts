@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { ChampionsModule } from './champions/champions.module';
+import { AbilitiesModule } from './abilities/abilities.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { ChampionsModule } from './champions/champions.module';
       synchronize: true,
     }),
     ChampionsModule,
+    AbilitiesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

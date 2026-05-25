@@ -1,4 +1,5 @@
-import { Column, Model, Table } from 'sequelize-typescript';
+import { Column, Model, Table, HasMany } from 'sequelize-typescript';
+import { Ability } from '../../abilities/entities/ability.entity';
 
 @Table
 export class Champion extends Model {
@@ -13,4 +14,7 @@ export class Champion extends Model {
 
   @Column
   region!: string;
+
+  @HasMany(() => Ability)
+  abilities!: Ability[];
 }
