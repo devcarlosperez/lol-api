@@ -1,10 +1,27 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { SequelizeModule } from '@nestjs/sequelize';
+import { ChampionsModule } from './champions/champions.module';
+import { AbilitiesModule } from './abilities/abilities.module';
 
 @Module({
-  imports: [],
+  imports: [
+    SequelizeModule.forRoot({
+      dialect: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: 'admin123',
+      database: 'lol_api',
+      autoLoadModels: true,
+      synchronize: true,
+    }),
+    ChampionsModule,
+    AbilitiesModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
+
 export class AppModule {}
